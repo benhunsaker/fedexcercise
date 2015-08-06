@@ -7,7 +7,7 @@ module.exports = {
   , 'css'      :['less', 'cssmin']
 
     // Register Dev Tasks
-  , 'base'     :['jshint', 'js', 'css']
-  , 'default'  :['base', 'watch']
+  , 'build'     :['jshint', 'js', 'css']
+  , 'default'  :['build', 'watch']
 
 };
