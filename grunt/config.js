@@ -7,7 +7,8 @@ module.exports = {
     public_root: "",
     folders: {
       libs    : ['js/libs'],
-      build   : ['build']
+      build   : ['build'],
+      bower   : ['<%= public_root %>bower_components']
     },
     build: {
       css     : ['<%= folders.build %>/css'],
@@ -15,11 +16,13 @@ module.exports = {
       js      : ['<%= folders.build %>/js']
     },
     files: {
-      grunt   : ['gruntfile.js', 'grunt-tasks/*.js'],
-      hbs     : ['handlebars/**/*.hbs'],
-      less    : ['<%= public_root %>less/*.less'],
-      js      : ['<%= public_root %>js/**/*.js'],
-      helpers : ['<%= public_root %>js/handlebars/*.js']
+      jquery      : ['<%= folders.bower %>/jquery-commonjs/build/release.js'],
+      handlebars  : ['<%= folders.bower %>/handlebars/handlebars.js'],
+      grunt       : ['gruntfile.js', 'grunt-tasks/*.js'],
+      hbs         : ['handlebars/**/*.hbs'],
+      less        : ['<%= public_root %>less/*.less'],
+      js          : ['<%= public_root %>js/**/*.js'],
+      helpers     : ['<%= public_root %>js/handlebars/*.js']
     }
 
 };

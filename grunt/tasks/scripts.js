@@ -2,10 +2,9 @@
 
 module.exports = {
 
-    // Concat All CrUX JS
-    concat: {
+    browserify: {
       js: {
-          src: ['bower_components/jquery/dist/jquery.min.js','<%= folders.libs %>/**/*.js', '<%= files.js %>']
+          src: ['<%= public_root%>js/app/main.js']
         , dest: '<%= build.js %>/main.js'
       }
     },

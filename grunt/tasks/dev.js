@@ -15,36 +15,6 @@ module.exports = {
       }
     },
 
-
-    // Compile Handlebars Files
-    handlebars: {
-      compile: {
-        options: {
-          namespace   : 'Handlebars.templates',
-          wrapped     : true,
-          processName : function(filename){
-            var no_ext = filename.replace('.hbs', '')
-              , parts = no_ext.split('/')
-              , space = parts.slice(3);
-
-            if (space[space.length-1] === 'index') {
-              space.pop();
-            }
-
-            return space.join('_');
-          }
-        },
-        files: {
-            '<%= build.hbs %>/core.js'    : 'public/handlebars/core/**/*.hbs'
-          , '<%= build.hbs %>/desktop.js' : 'public/handlebars/desktop/**/*.hbs'
-          , '<%= build.hbs %>/mobile.js'  : 'public/handlebars/mobile/**/*.hbs'
-          , '<%= build.hbs %>/print.js'   : 'public/handlebars/print/**/*.hbs'
-          , '<%= build.hbs %>/tablet.js'  : 'public/handlebars/tablet/**/*.hbs'
-        }
-      }
-    },
-
-
     // Define "watch" tasks
     watch: {
       options: {
@@ -52,12 +22,8 @@ module.exports = {
       },
       js: {
           files: ['<%= files.grunt %>', '<%= files.js %>', '<%= files.helpers %>']
-        , tasks: ['jshint', 'concat:js']
+        , tasks: ['jshint', 'js']
       },
-      // handlebars: {
-      //     files: ['<%= files.hbs %>']
-      //   , tasks: ['handlebars']
-      // },
       less: {
           files: ['<%= files.less %>']
         , tasks: ['less', 'cssmin']
