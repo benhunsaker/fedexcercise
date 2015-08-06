@@ -1,6 +1,4 @@
 "use strict";
-/* global alert */
-/* global window */
 
 var jQuery = require('jquery'),
     Handlebars = require('handlebars'),
