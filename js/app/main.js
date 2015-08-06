@@ -2,6 +2,7 @@
 /* global jQuery */
 /* global $ */
 /* global Handlebars */
+/* global JXONTree */
 
 var flickr = (function ($) {
       var flickr = {}
@@ -22,16 +23,36 @@ var flickr = (function ($) {
 
       return flickr;
     }(jQuery)),
+
     app = (function ($, flickr) {
-      var $main = $("main"),
-          thumbnail = Handlebars.compile('<i class="flickr-image"><img src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_q.jpg" /></i>');
+      var $header = $("header"),
+          $main = $("<main />"),
+          $search = $("#search-input"),
+          thumbnail = Handlebars.compile('<i class="flickr-image" data-image-title="{{title}}"><img src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_q.jpg" /></i>');
+
+      $search.on("keyup", function (e) {
+        var $el = $(e.target),
+            val = $.trim($el.val()),
+            images = $main.find(".flickr-image");
+        if (val === "") {
+          images.show();
+        } else {
+          images
+            .hide()
+            .filter('[data-image-title*="' + val + '"]')
+            .show();
+        }
+      });
 
       flickr.get_photos()
         .done(function (data) {
-          console.log("Success", data);
+          var photo_details_array = [];
+
           $.each(data.photos.photo, function (i, photo) {
             $main.append(thumbnail(photo));
           });
+
+          $header.after($main);
         })
         .fail(function () {
           console.log("Error");

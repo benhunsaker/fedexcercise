@@ -5,6 +5,8 @@ body {
   margin: 0px;
   background: #404b44;
   font-family: Helvetica, Arial, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
 }
 
 img { margin: 0px; }
@@ -26,7 +28,58 @@ header {
 }
 
 main {
-  margin: 30px auto;
+  margin: 30px auto 60px;
+  &::after {
+    content: "";
+    display: block;
+    position: relative;
+    clear: both;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  height: 40px;
+  left: 0px;
+  right: 0px;
+  background: #404b44;
+  background: linear-gradient( 180deg, #404b44, #404b44 90%, rgba(64, 75, 68, 0) 10%);
+
+  &::before {
+    content: "";
+    clear: both;
+  }
+}
+
+#search-input {
+  line-height: 26px;
+  height: 26px;
+  font-size: 15px;
+  width: 320px;
+  margin: 0px auto;
+  display: block;
+  padding: 0px 7px;
+  margin-top: 5px;
+  background: lighten(#3e4b44, 10%);
+  border: #302d1f 1px solid;
+  border-radius: 2px;
+  color: #302d1f;
+
+  &::-webkit-input-placeholder { color: #a7c69a; }
+  &:-moz-placeholder { color: #a7c69a; } /* Firefox 18- */
+  &::-moz-placeholder { color: #a7c69a; } /* Firefox 19+ */
+  &:-ms-input-placeholder { color: #a7c69a; }
+
+  &:focus, &:hover {
+    background: #a3c69f;
+    color: #404b44;
+
+    &::-webkit-input-placeholder { color: #404b44; }
+    &:-moz-placeholder { color: #404b44; } /* Firefox 18- */
+    &::-moz-placeholder { color: #404b44; } /* Firefox 19+ */
+    &:-ms-input-placeholder { color: #404b44; }
+  }
 }
 
 .flickr-image {
