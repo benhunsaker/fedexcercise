@@ -9,7 +9,7 @@ module.exports = {
 
     // Register Dev Tasks
   //, 'base'     :['jshint', 'handlebars', 'less']
-  , 'base'     :['jshint', 'concat:js', 'less']
+  , 'base'     :['jshint', 'concat:js', 'less', 'cssmin']
   , 'default'  :['base', 'watch']
 
 };

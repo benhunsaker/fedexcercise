@@ -60,7 +60,7 @@ module.exports = {
       // },
       less: {
           files: ['<%= files.less %>']
-        , tasks: ['less']
+        , tasks: ['less', 'cssmin']
       }
     }
 
